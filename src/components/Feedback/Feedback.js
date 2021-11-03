@@ -30,7 +30,7 @@ class Feedback extends Component {
           options={Object.keys(this.state)}
           onIncrement={this.handleIncrement}
         />
-        <Statistics stats={Object.keys(this.state)} value={this.state} />
+        <Statistics stats={Object.keys(this.state)} values={this.state} />
       </div>
     );
   }
