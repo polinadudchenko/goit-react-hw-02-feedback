@@ -1,8 +1,15 @@
-import logo from "./logo.svg";
+import { Component } from "react";
 import "./App.css";
+import Feedback from "./components/Feedback";
 
-function App() {
-  return <div className="App"></div>;
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Feedback />
+      </div>
+    );
+  }
 }
 
 export default App;
