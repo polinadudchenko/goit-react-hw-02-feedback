@@ -4,19 +4,36 @@ import { generate } from "shortid";
 import s from "./Statistics.module.css";
 
 class Statistics extends Component {
-  static propTypes = {};
+  static defaultProps = {
+    onCountPositive: () => 0,
+  };
+
+  static propTypes = {
+    stats: PropTypes.arrayOf(PropTypes.string).isRequired,
+    values: PropTypes.object.isRequired,
+    onCountPositive: PropTypes.func.isRequired,
+    onCountTotal: PropTypes.func.isRequired,
+  };
 
   render() {
-    const { stats, values } = this.props;
+    const { stats, values, onCountTotal, onCountPositive } = this.props;
 
     return (
-      <div className="statistics">
-        <h2 className="statistics__title">Statistics</h2>
-        {stats.map((stat) => (
-          <p key={generate()}>
-            {stat}: {values[stat]}
-          </p>
-        ))}
+      <div className={s.statistics}>
+        <h2 className={s.statistics__title}>Statistics</h2>
+        <ul className={s.statistics__list}>
+          {stats.map((stat) => (
+            <li key={generate()} className={s.statistics__item}>
+              {stat}: {values[stat]}
+            </li>
+          ))}
+          <li key={generate()} className={s.statistics__item}>
+            Total: {onCountTotal()}
+          </li>
+          <li key={generate()} className={s.statistics__item}>
+            Positive Feedback: {onCountPositive()}%
+          </li>
+        </ul>
       </div>
     );
   }

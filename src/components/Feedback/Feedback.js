@@ -22,15 +22,35 @@ class Feedback extends Component {
     });
   };
 
+  countTotalFeedback = () => {
+    return Object.keys(this.state).reduce(
+      (acc, option) => acc + this.state[option],
+      0
+    );
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const totalFeedback = this.countTotalFeedback();
+
+    return totalFeedback
+      ? Math.floor((this.state["good"] * 100) / totalFeedback)
+      : 0;
+  };
+
   render() {
     return (
-      <div className="feedback">
-        <h1 className="feedback__title">Please leave your feedback</h1>
+      <div className={s.feedback}>
+        <h1 className={s.feedback__title}>Please leave your feedback</h1>
         <FeedbackOptions
           options={Object.keys(this.state)}
           onIncrement={this.handleIncrement}
         />
-        <Statistics stats={Object.keys(this.state)} values={this.state} />
+        <Statistics
+          stats={Object.keys(this.state)}
+          values={this.state}
+          onCountTotal={this.countTotalFeedback}
+          onCountPositive={this.countPositiveFeedbackPercentage}
+        />
       </div>
     );
   }
