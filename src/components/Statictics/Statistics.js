@@ -4,10 +4,6 @@ import { generate } from 'shortid';
 import s from './Statistics.module.css';
 
 class Statistics extends Component {
-  static defaultProps = {
-    onCountPositive: () => 0,
-  };
-
   static propTypes = {
     stats: PropTypes.arrayOf(PropTypes.string).isRequired,
     values: PropTypes.object.isRequired,
