@@ -6,9 +6,6 @@ import Section from '../Section';
 import Notification from '../Notification';
 
 class Feedback extends Component {
-  static defaultProps = {};
-  static propTypes = {};
-
   state = {
     good: 0,
     neutral: 0,
@@ -18,9 +15,7 @@ class Feedback extends Component {
   handleIncrement = e => {
     const option = e.currentTarget.textContent;
     this.setState(prevState => {
-      return {
-        [option]: prevState[option] + 1,
-      };
+      return { [option]: prevState[option] + 1 };
     });
   };
 
@@ -42,7 +37,6 @@ class Feedback extends Component {
   render() {
     return (
       <div className={s.feedback}>
-        <h1 className={s.feedback__title}>Feedback</h1>
         <Section title="Please leave your feedback">
           <FeedbackOptions
             options={Object.keys(this.state)}

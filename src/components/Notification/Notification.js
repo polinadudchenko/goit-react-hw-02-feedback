@@ -8,3 +8,7 @@ export default function Notification({ message }) {
     </div>
   );
 }
+
+Notification.propTypes = {
+  message: PropTypes.string.isRequired,
+};
