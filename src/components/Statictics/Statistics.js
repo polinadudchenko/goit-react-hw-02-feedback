@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { generate } from "shortid";
-import s from "./Statistics.module.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { generate } from 'shortid';
+import s from './Statistics.module.css';
 
 class Statistics extends Component {
   static defaultProps = {
@@ -20,9 +20,8 @@ class Statistics extends Component {
 
     return (
       <div className={s.statistics}>
-        <h2 className={s.statistics__title}>Statistics</h2>
         <ul className={s.statistics__list}>
-          {stats.map((stat) => (
+          {stats.map(stat => (
             <li key={generate()} className={s.statistics__item}>
               {stat}: {values[stat]}
             </li>

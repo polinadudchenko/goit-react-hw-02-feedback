@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { generate } from "shortid";
-import s from "./FeedbackOptions.module.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { generate } from 'shortid';
+import s from './FeedbackOptions.module.css';
 
 class Buttons extends Component {
   static propTypes = {
@@ -11,9 +11,13 @@ class Buttons extends Component {
   render() {
     const { options, onIncrement } = this.props;
     return (
-      <div className="buttons">
-        {options.map((option) => (
-          <button key={generate()} onClick={onIncrement}>
+      <div className={s.options}>
+        {options.map(option => (
+          <button
+            key={generate()}
+            onClick={onIncrement}
+            className={s.options__button}
+          >
             {option}
           </button>
         ))}
