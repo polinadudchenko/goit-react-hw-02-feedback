@@ -5,12 +5,14 @@ import Statistics from '../Statictics';
 import Section from '../Section';
 import Notification from '../Notification';
 
+const INITIAL_STATE = {
+  good: 0,
+  neutral: 0,
+  bad: 0,
+};
+
 class Feedback extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+  state = { ...INITIAL_STATE };
 
   handleIncrement = e => {
     const option = e.currentTarget.textContent;
